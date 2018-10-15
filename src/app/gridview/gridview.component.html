@@ -1,0 +1,20 @@
+<h4 *ngIf="appState$.pending">loading...</h4>
+
+<p *ngIf="!appState$.pending && !appState$.rates"><i>Select currency, type date and press 'Display' to continue.</i></p>
+
+<table class="table" *ngIf="appState$.rates">
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Buy</th>
+      <th>Sell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rate of appState$.rates">
+      <td [ngClass]="{marked: rate.marked}">{{rate.label}}</td>
+      <td [ngClass]="{marked: rate.marked}">{{rate.buyValue | number : '1.4-4'}}</td>
+      <td [ngClass]="{marked: rate.marked}">{{rate.sellValue | number : '1.4-4'}}</td>
+    </tr>
+  </tbody>
+</table>

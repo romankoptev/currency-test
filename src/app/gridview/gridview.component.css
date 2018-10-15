@@ -1,0 +1,19 @@
+.table {
+    width: 600px;
+    /* border-collapse:  */
+    border-spacing: 0;
+    border-color: #fff;
+}
+.table th {
+    padding: 5px 10px;
+    text-align: left;
+    border-bottom: 2px solid #ccc;
+}
+.table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table td.marked {
+    color: red;
+}

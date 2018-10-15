@@ -1,0 +1,15 @@
+<div>
+  <div class="form-control">
+    <select [(ngModel)]="appState$.currentCurrency">
+      <option *ngFor="let currency of currencies$" value="{{currency.id}}">{{currency.value}}</option>
+    </select>
+  </div>
+
+  <div class="form-control">
+    <input type="text" [(ngModel)]="appState$.currentDate">
+  </div>
+
+  <div class="form-control">
+    <button (click)="onClick()">Display</button>
+  </div>
+</div>
