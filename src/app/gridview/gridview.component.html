@@ -5,7 +5,13 @@
 <table class="table" *ngIf="appState$.rates">
   <thead>
     <tr>
-      <th>Currency</th>
+      <th>
+        <div (click)="onClick()">
+          Currency 
+          <i class="fa fa-chevron-up" *ngIf="appState$.sortDirect === 'asc'" ></i>
+          <i class="fa fa-chevron-down" *ngIf="appState$.sortDirect === 'desc'"></i>
+        </div>
+      </th>
       <th>Buy</th>
       <th>Sell</th>
     </tr>

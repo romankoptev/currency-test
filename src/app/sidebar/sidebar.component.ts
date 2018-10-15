@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from '../app-state';
 import { StateService } from '../state.service';
 import { CurrencyItem } from '../currencies-select';
+import { sortCondition } from '../sorting-helper';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,16 +24,6 @@ export class SidebarComponent implements OnInit {
       .subscribe(appState => this.appState$ = appState);
   }
 
-  sortCondition(a, b) {
-    const {sortDirect} = this.appState$;
-
-    if (sortDirect==='asc')
-      return a.label > b.label ? 1 : a.label < b.label ? -1 : 0;
-    if (sortDirect==='desc')
-      return a.label < b.label ? 1 : a.label > b.label ? -1 : 0;
-    return 0;    
-  }
-
   prepareData(data) {
     if(data.rates)
       return Object.keys(data.rates).map(key => (
@@ -41,7 +32,7 @@ export class SidebarComponent implements OnInit {
           label: key, 
           buyValue: data.rates[key] + (data.rates[key]/100)*5,
           sellValue: data.rates[key] - (data.rates[key]/100)*5
-        })).sort(this.sortCondition.bind(this));
+        })).sort(sortCondition.bind(this));
     return [];
   }
 
